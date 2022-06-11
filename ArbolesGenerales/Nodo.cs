@@ -8,18 +8,19 @@ namespace ArbolesGenerales
 {
     public class Nodo
     {
-        public string Dato { get; set; } //prop 2xtab
-        public Nodo Hijo { get; set; }
+        private string dato;
+        private Nodo hijo;
+        private Nodo hermano;
 
-        public Nodo Hermano { get; set; }
+        public string Dato { get => dato; set => dato = value; }
+        public Nodo Hijo { get => hijo; set => hijo = value; }
+        public Nodo Hermano { get => hermano; set => hermano = value; }
 
-        public Nodo(string dato, Nodo hijo = null, Nodo hermano = null) //ctor tab tab
+        public Nodo(string dato, Nodo hijo = null, Nodo hermano = null)
         {
-            Dato = dato;
-            Hijo = hijo;
-            Hermano = hermano;
-
+            this.dato = dato;
+            this.hijo = hijo;
+            this.hermano = hermano;
         }
-
     }
 }
