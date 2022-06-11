@@ -9,9 +9,6 @@ namespace ArbolesGenerales
     public class ArbolGeneral
     {
         private readonly Nodo raiz;
-
-        //public Nodo Raiz => raiz;
-
         public Nodo Raiz { get { return raiz; } }
 
         public ArbolGeneral(string dato)
@@ -19,36 +16,37 @@ namespace ArbolesGenerales
             raiz = new Nodo(dato);
         }
 
-        public Nodo InsertarHijo(Nodo padre, string dato)
+        public Nodo Insertar(string dato, Nodo nodoPadre)
         {
             if (string.IsNullOrWhiteSpace(dato))
             {
-                throw new Exception("el dato esta vacio");
-
+                throw new Exception("No se puede insertar un valor vacío en dato");
             }
-            if (padre is null)
-            {
-                throw new Exception("el padre no puede ser nulo");
-            }
-            if (padre.Hijo is null)
-            {
-                padre.Hijo = new Nodo(dato);
-                return padre.Hijo;
 
+            if (nodoPadre == null)
+            {
+                throw new Exception("No se puede insertar un nodo, sin especificar el padre");
+            }
+
+            if (nodoPadre.Hijo == null)
+            {
+                nodoPadre.Hijo = new Nodo(dato);
+                return nodoPadre.Hijo;
             }
             else
             {
-                Nodo hijoActual = padre.Hijo;
+                Nodo hijoActual = nodoPadre.Hijo;
 
-                while (hijoActual.Hermano is not null)
+                while (hijoActual.Hermano != null)
                 {
                     hijoActual = hijoActual.Hermano;
                 }
+
                 hijoActual.Hermano = new Nodo(dato);
                 return hijoActual.Hermano;
             }
-
         }
+
         private void Recorrer(Nodo nodo, ref int posicion, ref string datos)
         {
             if (nodo != null)
