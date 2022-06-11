@@ -12,7 +12,7 @@ namespace ArbolesGenerales
 
         //public Nodo Raiz => raiz;
 
-        public Nodo Raiz { get { return raiz } }
+        public Nodo Raiz { get { return raiz; } }
 
         public ArbolGeneral(string dato)
         {
@@ -21,7 +21,7 @@ namespace ArbolesGenerales
 
         public Nodo InsertarHijo(Nodo padre, string dato)
         {
-            if (string.IsNullOrWhiteSpace(dato)
+            if (string.IsNullOrWhiteSpace(dato))
             {
                 throw new Exception("el dato esta vacio");
 
